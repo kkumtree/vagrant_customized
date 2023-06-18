@@ -1,0 +1,3 @@
+[submodule "_Dockerfiles/cb-docker-images"]
+	path = _Dockerfiles/cb-docker-images
+	url = git@github.com:aws/aws-codebuild-docker-images.git
