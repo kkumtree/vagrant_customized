@@ -1,18 +1,15 @@
 Vagrant.configure("2") do |config|
   config.vm.define "ubuntu" do |ubuntu|
     ubuntu.vm.provider "docker" do |d|
-      d.name = "ubuntu-90-test"
-      d.build_dir = "../_Dockerfiles/cb-docker-images/ubuntu/standard/7.0"
+      d.build_dir = "."
     end
 
-    ubuntu.vm.network "private_network", ip: "192.168.33.10"
-
-    ubuntu.vm.provision "shell", inline: <<-SCRIPT
-      sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-      sudo useradd kkumtree -m -s /bin/bash
-      sudo usermod -a -G sudo kkumtree
-      echo kkumtree:kkumtree | sudo chpasswd
-      sudo systemctl restart sshd
-    SCRIPT
+    # ubuntu.vm.provision "shell", inline: <<-SCRIPT
+    #   sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+    #   sudo useradd kkumtree -m -s /bin/bash
+    #   sudo usermod -a -G sudo kkumtree
+    #   echo kkumtree:kkumtree | sudo chpasswd
+    #   sudo systemctl restart sshd
+    # SCRIPT
   end
 end
